@@ -41,6 +41,13 @@ final class LeetcodeTests {
         assertThat(new ProductOfArrayExceptSelf().productExceptSelf(numbers)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Valid Sudoku")
+    void isValidSudoku(char[][] board, boolean expected) {
+        assertThat(new ValidSudoku().isValidSudoku(board)).isEqualTo(expected);
+    }
+
     private TreeSet<TreeSet<String>> sorted(List<List<String>> lists) {
         return lists.stream()
                    .map(TreeSet::new)
