@@ -26,6 +26,14 @@ final class LeetcodeTests {
         assertThat(new TopKFrequentElements().topKFrequent(numbers, k)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Encode and Decode Strings")
+    void encodeAndDecodeStrings(List<String> strings) {
+        var solution = new EncodeAndDecodeStrings();
+        assertThat(solution.decode(solution.encode(strings))).isEqualTo(strings);
+    }
+
     private TreeSet<TreeSet<String>> sorted(List<List<String>> lists) {
         return lists.stream()
                    .map(TreeSet::new)
