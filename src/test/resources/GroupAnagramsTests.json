@@ -1,0 +1,46 @@
+[
+  {
+    "strings": [
+      "eat",
+      "tea",
+      "tan",
+      "ate",
+      "nat",
+      "bat"
+    ],
+    "expected": [
+      [
+        "bat"
+      ],
+      [
+        "nat",
+        "tan"
+      ],
+      [
+        "ate",
+        "eat",
+        "tea"
+      ]
+    ]
+  },
+  {
+    "strings": [
+      ""
+    ],
+    "expected": [
+      [
+        ""
+      ]
+    ]
+  },
+  {
+    "strings": [
+      "a"
+    ],
+    "expected": [
+      [
+        "a"
+      ]
+    ]
+  }
+]
