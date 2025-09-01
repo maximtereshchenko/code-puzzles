@@ -10,13 +10,20 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-final class GroupAnagramsTests {
+final class LeetcodeTests {
 
     @ParameterizedTest
     @ArgumentsSource(LeetcodeArgumentsProvider.class)
     @DisplayName("Group Anagrams")
-    void test(String[] strings, List<List<String>> expected) {
+    void groupAnagrams(String[] strings, List<List<String>> expected) {
         assertThat(sorted(new GroupAnagrams().groupAnagrams(strings))).isEqualTo(sorted(expected));
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Top K Frequent Elements")
+    void topKFrequent(int[] numbers, int k, int[] expected) {
+        assertThat(new TopKFrequentElements().topKFrequent(numbers, k)).isEqualTo(expected);
     }
 
     private TreeSet<TreeSet<String>> sorted(List<List<String>> lists) {

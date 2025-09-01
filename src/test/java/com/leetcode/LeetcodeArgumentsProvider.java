@@ -69,7 +69,7 @@ final class LeetcodeArgumentsProvider implements ArgumentsProvider {
             Objects.requireNonNull(
                     Thread.currentThread()
                         .getContextClassLoader()
-                        .getResource(context.getRequiredTestClass().getSimpleName() + ".json")
+                        .getResource(context.getRequiredTestMethod().getName() + ".json")
                 )
                 .toURI()
         );
