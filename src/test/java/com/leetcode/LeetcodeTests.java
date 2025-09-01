@@ -34,6 +34,13 @@ final class LeetcodeTests {
         assertThat(solution.decode(solution.encode(strings))).isEqualTo(strings);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Product of Array Except Self")
+    void productExceptSelf(int[] numbers, int[] expected) {
+        assertThat(new ProductOfArrayExceptSelf().productExceptSelf(numbers)).isEqualTo(expected);
+    }
+
     private TreeSet<TreeSet<String>> sorted(List<List<String>> lists) {
         return lists.stream()
                    .map(TreeSet::new)
