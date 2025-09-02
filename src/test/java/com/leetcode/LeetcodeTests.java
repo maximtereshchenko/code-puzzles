@@ -68,6 +68,13 @@ final class LeetcodeTests {
         assertThat(new TwoSumInputArrayIsSorted().twoSum(numbers, target)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("3Sum")
+    void threeSum(int[] numbers, List<List<Integer>> expected) {
+        assertThat(sorted(new ThreeSum().threeSum(numbers))).isEqualTo(sorted(expected));
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
