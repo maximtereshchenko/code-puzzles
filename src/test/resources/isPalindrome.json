@@ -1,0 +1,18 @@
+[
+  {
+    "string": "A man, a plan, a canal: Panama",
+    "expected": true
+  },
+  {
+    "string": "race a car",
+    "expected": false
+  },
+  {
+    "string": " ",
+    "expected": true
+  },
+  {
+    "string": "0P",
+    "expected": false
+  }
+]

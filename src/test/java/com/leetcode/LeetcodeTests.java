@@ -56,6 +56,13 @@ final class LeetcodeTests {
             .isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Valid Palindrome")
+    void isPalindrome(String string, boolean expected) {
+        assertThat(new ValidPalindrome().isPalindrome(string)).isEqualTo(expected);
+    }
+
     private TreeSet<TreeSet<String>> sorted(List<List<String>> lists) {
         return lists.stream()
                    .map(TreeSet::new)
