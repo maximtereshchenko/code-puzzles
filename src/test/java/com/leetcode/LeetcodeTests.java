@@ -75,6 +75,13 @@ final class LeetcodeTests {
         assertThat(sorted(new ThreeSum().threeSum(numbers))).isEqualTo(sorted(expected));
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Container With Most Water")
+    void maxArea(int[] height, int expected) {
+        assertThat(new ContainerWithMostWater().maxArea(height)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
