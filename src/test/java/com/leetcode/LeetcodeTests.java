@@ -5,8 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
 import java.util.List;
-import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -70,13 +68,14 @@ final class LeetcodeTests {
         assertThat(new TwoSumInputArrayIsSorted().twoSum(numbers, target)).isEqualTo(expected);
     }
 
-    private TreeSet<TreeSet<String>> sorted(List<List<String>> lists) {
+    private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
-                   .map(TreeSet::new)
-                   .collect(Collectors.toCollection(() -> new TreeSet<>(this::compare)));
+                   .map(list -> list.stream().sorted().toList())
+                   .sorted(this::compare)
+                   .toList();
     }
 
-    private int compare(TreeSet<String> first, TreeSet<String> second) {
+    private <T extends Comparable<T>> int compare(List<T> first, List<T> second) {
         var firstIterator = first.iterator();
         var secondIterator = second.iterator();
         while (firstIterator.hasNext() && secondIterator.hasNext()) {
