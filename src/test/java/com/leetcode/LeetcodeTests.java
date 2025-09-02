@@ -63,6 +63,13 @@ final class LeetcodeTests {
         assertThat(new ValidPalindrome().isPalindrome(string)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Two Sum II - Input Array Is Sorted")
+    void twoSum(int[] numbers, int target, int[] expected) {
+        assertThat(new TwoSumInputArrayIsSorted().twoSum(numbers, target)).isEqualTo(expected);
+    }
+
     private TreeSet<TreeSet<String>> sorted(List<List<String>> lists) {
         return lists.stream()
                    .map(TreeSet::new)
