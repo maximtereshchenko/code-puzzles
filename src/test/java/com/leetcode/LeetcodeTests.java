@@ -48,6 +48,14 @@ final class LeetcodeTests {
         assertThat(new ValidSudoku().isValidSudoku(board)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Longest Consecutive Sequence")
+    void longestConsecutive(int[] numbers, int expected) {
+        assertThat(new LongestConsecutiveSequence().longestConsecutive(numbers))
+            .isEqualTo(expected);
+    }
+
     private TreeSet<TreeSet<String>> sorted(List<List<String>> lists) {
         return lists.stream()
                    .map(TreeSet::new)
