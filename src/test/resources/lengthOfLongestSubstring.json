@@ -1,0 +1,18 @@
+[
+  {
+    "string": "abcabcbb",
+    "expected": 3
+  },
+  {
+    "string": "bbbbb",
+    "expected": 1
+  },
+  {
+    "string": "pwwkew",
+    "expected": 3
+  },
+  {
+    "string": "abba",
+    "expected": 2
+  }
+]

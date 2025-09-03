@@ -96,6 +96,17 @@ final class LeetcodeTests {
         assertThat(new BestTimeToBuyAndSellStock().maxProfit(prices)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Longest Substring Without Repeating Characters")
+    void lengthOfLongestSubstring(String string, int expected) {
+        assertThat(
+            new LongestSubstringWithoutRepeatingCharacters()
+                .lengthOfLongestSubstring(string)
+        )
+            .isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())

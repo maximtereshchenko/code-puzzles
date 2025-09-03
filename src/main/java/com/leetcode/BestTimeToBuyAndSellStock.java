@@ -1,5 +1,6 @@
 package com.leetcode;
 
+//https://leetcode.com/problems/best-time-to-buy-and-sell-stock
 final class BestTimeToBuyAndSellStock {
 
     int maxProfit(int[] prices) {
