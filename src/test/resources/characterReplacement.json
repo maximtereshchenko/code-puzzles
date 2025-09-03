@@ -1,0 +1,12 @@
+[
+  {
+    "string": "ABAB",
+    "maxReplacements": 2,
+    "expected": 4
+  },
+  {
+    "string": "AABABBA",
+    "maxReplacements": 1,
+    "expected": 4
+  }
+]

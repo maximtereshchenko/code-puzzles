@@ -107,6 +107,17 @@ final class LeetcodeTests {
             .isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Longest Repeating Character Replacement")
+    void characterReplacement(String string, int maxReplacements, int expected) {
+        assertThat(
+            new LongestRepeatingCharacterReplacement()
+                .characterReplacement(string, maxReplacements)
+        )
+            .isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
