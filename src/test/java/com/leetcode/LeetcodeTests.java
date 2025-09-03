@@ -89,6 +89,13 @@ final class LeetcodeTests {
         assertThat(new TrappingRainWater().trap(height)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Best Time to Buy and Sell Stock")
+    void maxProfit(int[] prices, int expected) {
+        assertThat(new BestTimeToBuyAndSellStock().maxProfit(prices)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
