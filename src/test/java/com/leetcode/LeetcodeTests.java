@@ -82,6 +82,13 @@ final class LeetcodeTests {
         assertThat(new ContainerWithMostWater().maxArea(height)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Trapping Rain Water")
+    void trap(int[] height, int expected) {
+        assertThat(new TrappingRainWater().trap(height)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
