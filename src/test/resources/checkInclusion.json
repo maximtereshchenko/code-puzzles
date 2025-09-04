@@ -1,0 +1,27 @@
+[
+  {
+    "source": "ab",
+    "target": "e",
+    "expected": false
+  },
+  {
+    "source": "ab",
+    "target": "ba",
+    "expected": true
+  },
+  {
+    "source": "ab",
+    "target": "abc",
+    "expected": true
+  },
+  {
+    "source": "ab",
+    "target": "eidbaooo",
+    "expected": true
+  },
+  {
+    "source": "ab",
+    "target": "eidboaoo",
+    "expected": false
+  }
+]

@@ -118,6 +118,13 @@ final class LeetcodeTests {
             .isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Permutation in String")
+    void checkInclusion(String source, String target, boolean expected) {
+        assertThat(new PermutationInString().checkInclusion(source, target)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
