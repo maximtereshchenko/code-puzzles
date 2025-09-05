@@ -125,6 +125,13 @@ final class LeetcodeTests {
         assertThat(new PermutationInString().checkInclusion(source, target)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Minimum Window Substring")
+    void minWindow(String string, String pattern, String expected) {
+        assertThat(new MinimumWindowSubstring().minWindow(string, pattern)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())

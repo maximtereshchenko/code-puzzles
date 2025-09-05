@@ -1,0 +1,17 @@
+[
+  {
+    "string": "ADOBECODEBANC",
+    "pattern": "ABC",
+    "expected": "BANC"
+  },
+  {
+    "string": "a",
+    "pattern": "a",
+    "expected": "a"
+  },
+  {
+    "string": "a",
+    "pattern": "aa",
+    "expected": ""
+  }
+]
