@@ -132,6 +132,14 @@ final class LeetcodeTests {
         assertThat(new MinimumWindowSubstring().minWindow(string, pattern)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Sliding Window Maximum")
+    void maxSlidingWindow(int[] numbers, int windowSize, int[] expected) {
+        assertThat(new SlidingWindowMaximum().maxSlidingWindow(numbers, windowSize))
+            .isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
