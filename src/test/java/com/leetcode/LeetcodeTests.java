@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -145,6 +146,36 @@ final class LeetcodeTests {
     @DisplayName("Valid Parentheses")
     void isValid(String string, boolean expected) {
         assertThat(new ValidParentheses().isValid(string)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Min Stack")
+    void minStack(List<String> commands, List<List<Integer>> arguments, List<Integer> expected) {
+        var actual = new ArrayList<Integer>();
+        MinStack minStack = null;
+        for (var i = 0; i < commands.size(); i++) {
+            actual.add(
+                switch (commands.get(i)) {
+                    case "MinStack" -> {
+                        minStack = new MinStack();
+                        yield null;
+                    }
+                    case "push" -> {
+                        minStack.push(arguments.get(i).getFirst());
+                        yield null;
+                    }
+                    case "pop" -> {
+                        minStack.pop();
+                        yield null;
+                    }
+                    case "top" -> minStack.top();
+                    case "getMin" -> minStack.getMin();
+                    default -> throw new IllegalArgumentException();
+                }
+            );
+        }
+        assertThat(actual).isEqualTo(expected);
     }
 
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
