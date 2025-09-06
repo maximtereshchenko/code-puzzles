@@ -1,0 +1,26 @@
+[
+  {
+    "string": "()",
+    "expected": true
+  },
+  {
+    "string": "()[]{}",
+    "expected": true
+  },
+  {
+    "string": "(]",
+    "expected": false
+  },
+  {
+    "string": "([])",
+    "expected": true
+  },
+  {
+    "string": "([)]",
+    "expected": false
+  },
+  {
+    "string": "]",
+    "expected": false
+  }
+]

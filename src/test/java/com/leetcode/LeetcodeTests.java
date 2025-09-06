@@ -140,6 +140,13 @@ final class LeetcodeTests {
             .isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Valid Parentheses")
+    void isValid(String string, boolean expected) {
+        assertThat(new ValidParentheses().isValid(string)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
