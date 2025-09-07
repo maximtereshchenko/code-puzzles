@@ -178,6 +178,13 @@ final class LeetcodeTests {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Evaluate Reverse Polish Notation")
+    void evalRPN(String[] tokens, int expected) {
+        assertThat(new EvaluateReversePolishNotation().evalRPN(tokens)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
