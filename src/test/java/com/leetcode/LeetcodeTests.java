@@ -188,9 +188,15 @@ final class LeetcodeTests {
     @ParameterizedTest
     @ArgumentsSource(LeetcodeArgumentsProvider.class)
     @DisplayName("Generate Parentheses")
-    void generateParenthesis(int total, String[] expected) {
-        assertThat(new GenerateParentheses().generateParenthesis(total))
-            .containsExactlyInAnyOrder(expected);
+    void generateParenthesis(int total, List<String> expected) {
+        assertThat(new GenerateParentheses().generateParenthesis(total)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Daily Temperatures")
+    void dailyTemperatures(int[] temperatures, int[] expected) {
+        assertThat(new DailyTemperatures().dailyTemperatures(temperatures)).isEqualTo(expected);
     }
 
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
