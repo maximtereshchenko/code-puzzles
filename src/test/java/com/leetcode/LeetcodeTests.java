@@ -185,6 +185,14 @@ final class LeetcodeTests {
         assertThat(new EvaluateReversePolishNotation().evalRPN(tokens)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Generate Parentheses")
+    void generateParenthesis(int total, String[] expected) {
+        assertThat(new GenerateParentheses().generateParenthesis(total))
+            .containsExactlyInAnyOrder(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
