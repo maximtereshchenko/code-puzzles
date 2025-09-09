@@ -199,6 +199,13 @@ final class LeetcodeTests {
         assertThat(new DailyTemperatures().dailyTemperatures(temperatures)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Car Fleet")
+    void carFleet(int target, int[] positions, int[] speeds, int expected) {
+        assertThat(new CarFleet().carFleet(target, positions, speeds)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
