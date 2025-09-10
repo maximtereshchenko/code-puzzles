@@ -206,6 +206,14 @@ final class LeetcodeTests {
         assertThat(new CarFleet().carFleet(target, positions, speeds)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Largest Rectangle in Histogram")
+    void largestRectangleArea(int[] heights, int expected) {
+        assertThat(new LargestRectangleInHistogram().largestRectangleArea(heights))
+            .isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
