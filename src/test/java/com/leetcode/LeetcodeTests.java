@@ -214,6 +214,13 @@ final class LeetcodeTests {
             .isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Binary Search")
+    void search(int[] numbers, int target, int expected) {
+        assertThat(new BinarySearch().search(numbers, target)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
