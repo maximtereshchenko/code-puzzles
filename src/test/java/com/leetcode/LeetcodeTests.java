@@ -228,6 +228,13 @@ final class LeetcodeTests {
         assertThat(new Search2DMatrix().searchMatrix(matrix, target)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Koko Eating Bananas")
+    void minEatingSpeed(int[] piles, int hours, int expected) {
+        assertThat(new KokoEatingBananas().minEatingSpeed(piles, hours)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
