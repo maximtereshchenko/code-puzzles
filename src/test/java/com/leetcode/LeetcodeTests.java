@@ -242,6 +242,13 @@ final class LeetcodeTests {
         assertThat(new FindMinimumInRotatedSortedArray().findMin(numbers)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Search in Rotated Sorted Array")
+    void searchInRotatedSortedArray(int[] numbers, int target, int expected) {
+        assertThat(new SearchInRotatedSortedArray().search(numbers, target)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
