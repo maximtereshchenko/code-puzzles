@@ -235,6 +235,13 @@ final class LeetcodeTests {
         assertThat(new KokoEatingBananas().minEatingSpeed(piles, hours)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Find Minimum in Rotated Sorted Array")
+    void findMin(int[] numbers, int expected) {
+        assertThat(new FindMinimumInRotatedSortedArray().findMin(numbers)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
