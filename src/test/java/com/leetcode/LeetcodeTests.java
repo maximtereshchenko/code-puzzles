@@ -249,6 +249,46 @@ final class LeetcodeTests {
         assertThat(new SearchInRotatedSortedArray().search(numbers, target)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Time Based Key-Value Store")
+    void timeBasedKeyValueStore(
+        List<String> commands,
+        List<List<Object>> arguments,
+        List<Integer> expected
+    ) {
+        var actual = new ArrayList<String>();
+        TimeBasedKeyValueStore timeBasedKeyValueStore = null;
+        for (var i = 0; i < commands.size(); i++) {
+            actual.add(
+                switch (commands.get(i)) {
+                    case "TimeMap" -> {
+                        timeBasedKeyValueStore = new TimeBasedKeyValueStore();
+                        yield null;
+                    }
+                    case "set" -> {
+                        var commandArguments = arguments.get(i);
+                        timeBasedKeyValueStore.set(
+                            (String) commandArguments.get(0),
+                            (String) commandArguments.get(1),
+                            (int) commandArguments.get(2)
+                        );
+                        yield null;
+                    }
+                    case "get" -> {
+                        var commandArguments = arguments.get(i);
+                        yield timeBasedKeyValueStore.get(
+                            (String) commandArguments.get(0),
+                            (int) commandArguments.get(1)
+                        );
+                    }
+                    default -> throw new IllegalArgumentException();
+                }
+            );
+        }
+        assertThat(actual).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
