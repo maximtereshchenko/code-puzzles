@@ -1,5 +1,6 @@
 package com.leetcode;
 
+import com.leetcode.common.ListNode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
@@ -295,6 +296,13 @@ final class LeetcodeTests {
     void findMedianSortedArrays(int[] numbers1, int[] numbers2, double expected) {
         assertThat(new MedianOfTwoSortedArrays().findMedianSortedArrays(numbers1, numbers2))
             .isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Reverse Linked List")
+    void reverseList(ListNode head, ListNode expected) {
+        assertThat(new ReverseLinkedList().reverseList(head)).isEqualTo(expected);
     }
 
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
