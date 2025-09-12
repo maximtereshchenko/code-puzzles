@@ -289,6 +289,14 @@ final class LeetcodeTests {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Median of Two Sorted Arrays")
+    void findMedianSortedArrays(int[] numbers1, int[] numbers2, double expected) {
+        assertThat(new MedianOfTwoSortedArrays().findMedianSortedArrays(numbers1, numbers2))
+            .isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
