@@ -1,0 +1,27 @@
+[
+  {
+    "head": [
+      3,
+      2,
+      0,
+      -4
+    ],
+    "position": 1,
+    "expected": true
+  },
+  {
+    "head": [
+      1,
+      2
+    ],
+    "position": 0,
+    "expected": true
+  },
+  {
+    "head": [
+      1
+    ],
+    "position": -1,
+    "expected": false
+  }
+]

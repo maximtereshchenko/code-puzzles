@@ -312,6 +312,24 @@ final class LeetcodeTests {
         assertThat(new MergeTwoSortedLists().mergeTwoLists(list1, list2)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Linked List Cycle")
+    void hasCycle(ListNode head, int position, boolean expected) {
+        var last = head;
+        while (last.next != null) {
+            last = last.next;
+        }
+        if (position != -1) {
+            var cycleNode = head;
+            for (var i = 0; i < position; i++) {
+                cycleNode = cycleNode.next;
+            }
+            last.next = cycleNode;
+        }
+        assertThat(new LinkedListCycle().hasCycle(head)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
