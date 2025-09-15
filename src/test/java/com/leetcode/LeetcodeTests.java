@@ -305,6 +305,13 @@ final class LeetcodeTests {
         assertThat(new ReverseLinkedList().reverseList(head)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Merge Two Sorted Lists")
+    void mergeTwoLists(ListNode list1, ListNode list2, ListNode expected) {
+        assertThat(new MergeTwoSortedLists().mergeTwoLists(list1, list2)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())

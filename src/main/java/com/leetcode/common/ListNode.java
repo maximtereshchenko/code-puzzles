@@ -23,6 +23,8 @@ public final class ListNode {
         this(val, null);
     }
 
+    public ListNode() {}
+
     private static ListNode from(int[] values) {
         if (values.length == 0) {
             return null;
