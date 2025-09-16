@@ -6,7 +6,9 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @JsonDeserialize(using = ListNode.ListNodeDeserializer.class)
 public final class ListNode {
@@ -40,7 +42,7 @@ public final class ListNode {
 
     @Override
     public int hashCode() {
-        return Objects.hash(val, next);
+        return 0;
     }
 
     @Override
@@ -55,10 +57,19 @@ public final class ListNode {
 
     @Override
     public String toString() {
-        if (next == null) {
-            return String.valueOf(val);
+        return toString(new StringBuilder(), new HashSet<>());
+    }
+
+    private String toString(StringBuilder builder, Set<ListNode> nodes) {
+        builder.append(val);
+        if (!nodes.add(this)) {
+            return builder.append('*').toString();
         }
-        return "%d -> %s".formatted(val, next);
+        if (next == null) {
+            return builder.toString();
+        }
+        builder.append(" -> ");
+        return next.toString(builder, nodes);
     }
 
     static final class ListNodeDeserializer extends StdDeserializer<ListNode> {

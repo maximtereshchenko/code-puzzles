@@ -330,6 +330,14 @@ final class LeetcodeTests {
         assertThat(new LinkedListCycle().hasCycle(head)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Reorder List")
+    void reorderList(ListNode head, ListNode expected) {
+        new ReorderList().reorderList(head);
+        assertThat(head).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
