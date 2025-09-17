@@ -338,6 +338,14 @@ final class LeetcodeTests {
         assertThat(head).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Remove Node From End of Linked List")
+    void removeNthFromEnd(ListNode head, int offset, ListNode expected) {
+        assertThat(new RemoveNodeFromEndOfLinkedList().removeNthFromEnd(head, offset))
+            .isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
