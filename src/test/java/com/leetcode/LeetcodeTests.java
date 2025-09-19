@@ -357,6 +357,13 @@ final class LeetcodeTests {
         assertThat(CopyLinkedListWithRandomPointer.Node.equals(copy, head)).isTrue();
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Add Two Numbers")
+    void addTwoNumbers(ListNode firstNode, ListNode secondNode, ListNode expected) {
+        assertThat(new AddTwoNumbers().addTwoNumbers(firstNode, secondNode)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
