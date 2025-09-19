@@ -256,7 +256,7 @@ final class LeetcodeTests {
     void timeBasedKeyValueStore(
         List<String> commands,
         List<List<Object>> arguments,
-        List<Integer> expected
+        List<String> expected
     ) {
         var actual = new ArrayList<String>();
         TimeBasedKeyValueStore timeBasedKeyValueStore = null;
@@ -369,6 +369,39 @@ final class LeetcodeTests {
     @DisplayName("Find the Duplicate Number")
     void findDuplicate(int[] numbers, int expected) {
         assertThat(new FindTheDuplicateNumber().findDuplicate(numbers)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("LRU Cache")
+    void lruCache(
+        List<String> commands,
+        List<List<Integer>> arguments,
+        List<Integer> expected
+    ) {
+        var actual = new ArrayList<Integer>();
+        LRUCache lruCache = null;
+        for (var i = 0; i < commands.size(); i++) {
+            actual.add(
+                switch (commands.get(i)) {
+                    case "LRUCache" -> {
+                        lruCache = new LRUCache(arguments.get(i).getFirst());
+                        yield null;
+                    }
+                    case "put" -> {
+                        var commandArguments = arguments.get(i);
+                        lruCache.put(
+                            commandArguments.getFirst(),
+                            commandArguments.getLast()
+                        );
+                        yield null;
+                    }
+                    case "get" -> lruCache.get(arguments.get(i).getFirst());
+                    default -> throw new IllegalArgumentException();
+                }
+            );
+        }
+        assertThat(actual).isEqualTo(expected);
     }
 
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
