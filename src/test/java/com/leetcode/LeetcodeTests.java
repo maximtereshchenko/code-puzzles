@@ -346,6 +346,17 @@ final class LeetcodeTests {
             .isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Copy Linked List with Random Pointer")
+    void copyRandomList(
+        CopyLinkedListWithRandomPointer.Node head
+    ) {
+        var copy = new CopyLinkedListWithRandomPointer().copyRandomList(head);
+        assertThat(copy).isNotSameAs(head);
+        assertThat(CopyLinkedListWithRandomPointer.Node.equals(copy, head)).isTrue();
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())

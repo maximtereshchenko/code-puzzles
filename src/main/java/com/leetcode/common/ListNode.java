@@ -42,7 +42,7 @@ public final class ListNode {
 
     @Override
     public int hashCode() {
-        return 0;
+        return Objects.hash(val, next);
     }
 
     @Override
@@ -81,8 +81,7 @@ public final class ListNode {
         @Override
         public ListNode deserialize(JsonParser jsonParser, DeserializationContext context)
             throws IOException {
-            var values = jsonParser.readValueAs(int[].class);
-            return ListNode.from(values);
+            return ListNode.from(jsonParser.readValueAs(int[].class));
         }
     }
 }
