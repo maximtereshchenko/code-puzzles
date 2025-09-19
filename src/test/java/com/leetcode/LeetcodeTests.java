@@ -364,6 +364,13 @@ final class LeetcodeTests {
         assertThat(new AddTwoNumbers().addTwoNumbers(firstNode, secondNode)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Find the Duplicate Number")
+    void findDuplicate(int[] numbers, int expected) {
+        assertThat(new FindTheDuplicateNumber().findDuplicate(numbers)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
