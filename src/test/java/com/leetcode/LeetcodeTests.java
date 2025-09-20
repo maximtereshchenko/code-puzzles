@@ -404,6 +404,13 @@ final class LeetcodeTests {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Merge k Sorted Lists")
+    void mergeKLists(ListNode[] lists, ListNode expected) {
+        assertThat(new MergeKSortedLists().mergeKLists(lists)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
