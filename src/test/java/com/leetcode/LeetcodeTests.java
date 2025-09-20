@@ -1,6 +1,7 @@
 package com.leetcode;
 
 import com.leetcode.common.ListNode;
+import com.leetcode.common.TreeNode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
@@ -416,6 +417,13 @@ final class LeetcodeTests {
     @DisplayName("Reverse Nodes in k-Group")
     void reverseKGroup(ListNode head, int length, ListNode expected) {
         assertThat(new ReverseNodesInKGroup().reverseKGroup(head, length)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Invert Binary Tree")
+    void invertTree(TreeNode root, TreeNode expected) {
+        assertThat(new InvertBinaryTree().invertTree(root)).isEqualTo(expected);
     }
 
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {

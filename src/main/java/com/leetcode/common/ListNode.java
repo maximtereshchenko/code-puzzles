@@ -16,30 +16,6 @@ public final class ListNode {
     public int val;
     public ListNode next;
 
-    ListNode(int val, ListNode next) {
-        this.val = val;
-        this.next = next;
-    }
-
-    ListNode(int val) {
-        this(val, null);
-    }
-
-    public ListNode() {}
-
-    private static ListNode from(int[] values) {
-        if (values.length == 0) {
-            return null;
-        }
-        var head = new ListNode(values[0]);
-        var current = head;
-        for (var i = 1; i < values.length; i++) {
-            current.next = new ListNode(values[i]);
-            current = current.next;
-        }
-        return head;
-    }
-
     @Override
     public int hashCode() {
         return 1;
@@ -81,7 +57,18 @@ public final class ListNode {
         @Override
         public ListNode deserialize(JsonParser jsonParser, DeserializationContext context)
             throws IOException {
-            return ListNode.from(jsonParser.readValueAs(int[].class));
+            var values = jsonParser.readValueAs(int[].class);
+            if (values.length == 0) {
+                return null;
+            }
+            ListNode head = null;
+            for (var i = values.length - 1; i >= 0; i--) {
+                var node = new ListNode();
+                node.val = values[i];
+                node.next = head;
+                head = node;
+            }
+            return head;
         }
     }
 }
