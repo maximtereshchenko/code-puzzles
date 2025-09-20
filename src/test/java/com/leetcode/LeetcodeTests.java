@@ -411,6 +411,13 @@ final class LeetcodeTests {
         assertThat(new MergeKSortedLists().mergeKLists(lists)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Reverse Nodes in k-Group")
+    void reverseKGroup(ListNode head, int length, ListNode expected) {
+        assertThat(new ReverseNodesInKGroup().reverseKGroup(head, length)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())

@@ -42,7 +42,7 @@ public final class ListNode {
 
     @Override
     public int hashCode() {
-        return Objects.hash(val, next);
+        return 1;
     }
 
     @Override
