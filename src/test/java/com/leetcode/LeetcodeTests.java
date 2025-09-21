@@ -426,6 +426,13 @@ final class LeetcodeTests {
         assertThat(new InvertBinaryTree().invertTree(root)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Maximum Depth of Binary Tree")
+    void maxDepth(TreeNode root, int expected) {
+        assertThat(new MaximumDepthOfBinaryTree().maxDepth(root)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())

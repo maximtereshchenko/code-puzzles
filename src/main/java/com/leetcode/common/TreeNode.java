@@ -50,7 +50,7 @@ public final class TreeNode {
         @Override
         public TreeNode deserialize(JsonParser jsonParser, DeserializationContext context)
             throws IOException {
-            var values = jsonParser.readValueAs(int[].class);
+            var values = jsonParser.readValueAs(Integer[].class);
             if (values.length == 0) {
                 return null;
             }
@@ -66,8 +66,8 @@ public final class TreeNode {
             return root;
         }
 
-        private TreeNode treeNode(int[] values, int index, Queue<TreeNode> queue) {
-            if (index >= values.length) {
+        private TreeNode treeNode(Integer[] values, int index, Queue<TreeNode> queue) {
+            if (index >= values.length || values[index] == null) {
                 return null;
             }
             var node = new TreeNode();
