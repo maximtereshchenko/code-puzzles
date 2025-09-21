@@ -433,6 +433,13 @@ final class LeetcodeTests {
         assertThat(new MaximumDepthOfBinaryTree().maxDepth(root)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Diameter of Binary Tree")
+    void diameterOfBinaryTree(TreeNode root, int expected) {
+        assertThat(new DiameterOfBinaryTree().diameterOfBinaryTree(root)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
