@@ -477,6 +477,13 @@ final class LeetcodeTests {
             .isEqualTo(byValue(root, expected).orElseThrow());
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Binary Tree Level Order Traversal")
+    void levelOrder(TreeNode root, List<List<Integer>> expected) {
+        assertThat(new BinaryTreeLevelOrderTraversal().levelOrder(root)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
