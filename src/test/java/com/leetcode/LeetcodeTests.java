@@ -447,6 +447,13 @@ final class LeetcodeTests {
         assertThat(new BalancedBinaryTree().isBalanced(root)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Same Tree")
+    void isSameTree(TreeNode first, TreeNode second, boolean expected) {
+        assertThat(new SameTree().isSameTree(first, second)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
