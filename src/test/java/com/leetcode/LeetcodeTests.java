@@ -454,6 +454,13 @@ final class LeetcodeTests {
         assertThat(new SameTree().isSameTree(first, second)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Subtree of Another Tree")
+    void isSubtree(TreeNode root, TreeNode subRoot, boolean expected) {
+        assertThat(new SubtreeOfAnotherTree().isSubtree(root, subRoot)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
