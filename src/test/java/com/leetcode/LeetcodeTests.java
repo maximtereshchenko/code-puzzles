@@ -484,6 +484,13 @@ final class LeetcodeTests {
         assertThat(new BinaryTreeLevelOrderTraversal().levelOrder(root)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Binary Tree Right Side View")
+    void rightSideView(TreeNode root, List<Integer> expected) {
+        assertThat(new BinaryTreeRightSideView().rightSideView(root)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
