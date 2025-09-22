@@ -440,6 +440,13 @@ final class LeetcodeTests {
         assertThat(new DiameterOfBinaryTree().diameterOfBinaryTree(root)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Balanced Binary Tree")
+    void isBalanced(TreeNode root, boolean expected) {
+        assertThat(new BalancedBinaryTree().isBalanced(root)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
