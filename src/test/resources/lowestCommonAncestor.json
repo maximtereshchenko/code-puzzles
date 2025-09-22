@@ -1,0 +1,47 @@
+[
+  {
+    "root": [
+      6,
+      2,
+      8,
+      0,
+      4,
+      7,
+      9,
+      null,
+      null,
+      3,
+      5
+    ],
+    "first": 2,
+    "second": 8,
+    "expected": 6
+  },
+  {
+    "root": [
+      6,
+      2,
+      8,
+      0,
+      4,
+      7,
+      9,
+      null,
+      null,
+      3,
+      5
+    ],
+    "first": 2,
+    "second": 4,
+    "expected": 2
+  },
+  {
+    "root": [
+      2,
+      1
+    ],
+    "first": 2,
+    "second": 1,
+    "expected": 2
+  }
+]

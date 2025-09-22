@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.ArgumentsSource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -461,6 +462,21 @@ final class LeetcodeTests {
         assertThat(new SubtreeOfAnotherTree().isSubtree(root, subRoot)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Lowest Common Ancestor of a Binary Search Tree")
+    void lowestCommonAncestor(TreeNode root, int first, int second, int expected) {
+        assertThat(
+            new LowestCommonAncestorOfBinarySearchTree()
+                .lowestCommonAncestor(
+                    root,
+                    byValue(root, first).orElseThrow(),
+                    byValue(root, second).orElseThrow()
+                )
+        )
+            .isEqualTo(byValue(root, expected).orElseThrow());
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
@@ -484,5 +500,15 @@ final class LeetcodeTests {
             return -1;
         }
         return 0;
+    }
+
+    private Optional<TreeNode> byValue(TreeNode root, int value) {
+        if (root == null) {
+            return Optional.empty();
+        }
+        if (root.val == value) {
+            return Optional.of(root);
+        }
+        return byValue(root.left, value).or(() -> byValue(root.right, value));
     }
 }
