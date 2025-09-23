@@ -1,0 +1,48 @@
+[
+  {
+    "root": [
+      2,
+      1,
+      3
+    ],
+    "expected": true
+  },
+  {
+    "root": [
+      5,
+      1,
+      4,
+      null,
+      null,
+      3,
+      6
+    ],
+    "expected": false
+  },
+  {
+    "root": [
+      5,
+      4,
+      6,
+      null,
+      null,
+      3,
+      7
+    ],
+    "expected": false
+  },
+  {
+    "root": [
+      2,
+      2,
+      2
+    ],
+    "expected": false
+  },
+  {
+    "root": [
+      2147483647
+    ],
+    "expected": true
+  }
+]

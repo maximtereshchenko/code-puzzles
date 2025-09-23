@@ -498,6 +498,13 @@ final class LeetcodeTests {
         assertThat(new CountGoodNodesInBinaryTree().goodNodes(root)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Validate Binary Search Tree")
+    void isValidBST(TreeNode root, boolean expected) {
+        assertThat(new ValidateBinarySearchTree().isValidBST(root)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
