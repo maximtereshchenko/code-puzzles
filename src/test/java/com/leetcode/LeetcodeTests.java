@@ -505,6 +505,13 @@ final class LeetcodeTests {
         assertThat(new ValidateBinarySearchTree().isValidBST(root)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Kth Smallest Element in a BST")
+    void kthSmallest(TreeNode root, int index, int expected) {
+        assertThat(new KthSmallestElementInBST().kthSmallest(root, index)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
