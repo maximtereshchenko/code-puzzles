@@ -523,6 +523,13 @@ final class LeetcodeTests {
             .isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Binary Tree Maximum Path Sum")
+    void maxPathSum(TreeNode root, int expected) {
+        assertThat(new BinaryTreeMaximumPathSum().maxPathSum(root)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
