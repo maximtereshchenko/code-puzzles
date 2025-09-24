@@ -156,24 +156,24 @@ final class LeetcodeTests {
     @DisplayName("Min Stack")
     void minStack(List<String> commands, List<List<Integer>> arguments, List<Integer> expected) {
         var actual = new ArrayList<Integer>();
-        MinStack minStack = null;
+        MinStack solution = null;
         for (var i = 0; i < commands.size(); i++) {
             actual.add(
                 switch (commands.get(i)) {
                     case "MinStack" -> {
-                        minStack = new MinStack();
+                        solution = new MinStack();
                         yield null;
                     }
                     case "push" -> {
-                        minStack.push(arguments.get(i).getFirst());
+                        solution.push(arguments.get(i).getFirst());
                         yield null;
                     }
                     case "pop" -> {
-                        minStack.pop();
+                        solution.pop();
                         yield null;
                     }
-                    case "top" -> minStack.top();
-                    case "getMin" -> minStack.getMin();
+                    case "top" -> solution.top();
+                    case "getMin" -> solution.getMin();
                     default -> throw new IllegalArgumentException();
                 }
             );
@@ -261,17 +261,17 @@ final class LeetcodeTests {
         List<String> expected
     ) {
         var actual = new ArrayList<String>();
-        TimeBasedKeyValueStore timeBasedKeyValueStore = null;
+        TimeBasedKeyValueStore solution = null;
         for (var i = 0; i < commands.size(); i++) {
             actual.add(
                 switch (commands.get(i)) {
                     case "TimeMap" -> {
-                        timeBasedKeyValueStore = new TimeBasedKeyValueStore();
+                        solution = new TimeBasedKeyValueStore();
                         yield null;
                     }
                     case "set" -> {
                         var commandArguments = arguments.get(i);
-                        timeBasedKeyValueStore.set(
+                        solution.set(
                             (String) commandArguments.get(0),
                             (String) commandArguments.get(1),
                             (int) commandArguments.get(2)
@@ -280,7 +280,7 @@ final class LeetcodeTests {
                     }
                     case "get" -> {
                         var commandArguments = arguments.get(i);
-                        yield timeBasedKeyValueStore.get(
+                        yield solution.get(
                             (String) commandArguments.get(0),
                             (int) commandArguments.get(1)
                         );
@@ -382,23 +382,23 @@ final class LeetcodeTests {
         List<Integer> expected
     ) {
         var actual = new ArrayList<Integer>();
-        LRUCache lruCache = null;
+        LRUCache solution = null;
         for (var i = 0; i < commands.size(); i++) {
             actual.add(
                 switch (commands.get(i)) {
                     case "LRUCache" -> {
-                        lruCache = new LRUCache(arguments.get(i).getFirst());
+                        solution = new LRUCache(arguments.get(i).getFirst());
                         yield null;
                     }
                     case "put" -> {
                         var commandArguments = arguments.get(i);
-                        lruCache.put(
+                        solution.put(
                             commandArguments.getFirst(),
                             commandArguments.getLast()
                         );
                         yield null;
                     }
-                    case "get" -> lruCache.get(arguments.get(i).getFirst());
+                    case "get" -> solution.get(arguments.get(i).getFirst());
                     default -> throw new IllegalArgumentException();
                 }
             );
@@ -536,6 +536,38 @@ final class LeetcodeTests {
     void serializeAndDeserializeBinaryTree(TreeNode root) {
         var solution = new SerializeAndDeserializeBinaryTree();
         assertThat(solution.deserialize(solution.serialize(root))).isEqualTo(root);
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Kth Largest Element in a Stream")
+    void kthLargestElementInStream(
+        List<String> commands,
+        List<Object> arguments,
+        List<Integer> expected
+    ) {
+        var actual = new ArrayList<Integer>();
+        KthLargestElementInStream solution = null;
+        for (var i = 0; i < commands.size(); i++) {
+            actual.add(
+                switch (commands.get(i)) {
+                    case "KthLargest" -> {
+                        var commandArguments = (List<Object>) arguments.get(i);
+                        solution = new KthLargestElementInStream(
+                            (Integer) commandArguments.getFirst(),
+                            ((List<Integer>) commandArguments.getLast())
+                                .stream()
+                                .mapToInt(x -> x)
+                                .toArray()
+                        );
+                        yield null;
+                    }
+                    case "add" -> solution.add(((List<Integer>) arguments.get(i)).getFirst());
+                    default -> throw new IllegalArgumentException();
+                }
+            );
+        }
+        assertThat(actual).isEqualTo(expected);
     }
 
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
