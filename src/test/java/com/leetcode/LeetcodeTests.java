@@ -512,6 +512,17 @@ final class LeetcodeTests {
         assertThat(new KthSmallestElementInBST().kthSmallest(root, index)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Construct Binary Tree from Preorder and Inorder Traversal")
+    void buildTree(int[] preorder, int[] inorder, TreeNode expected) {
+        assertThat(
+            new ConstructBinaryTreeFromPreorderAndInorderTraversal()
+                .buildTree(preorder, inorder)
+        )
+            .isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
