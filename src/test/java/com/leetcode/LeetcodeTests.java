@@ -570,6 +570,13 @@ final class LeetcodeTests {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Last Stone Weight")
+    void lastStoneWeight(int[] stones, int expected) {
+        assertThat(new LastStoneWeight().lastStoneWeight(stones)).isEqualTo(expected);
+    }
+
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
         return lists.stream()
                    .map(list -> list.stream().sorted().toList())
