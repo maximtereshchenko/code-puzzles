@@ -7,6 +7,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ArgumentsSource;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -575,6 +576,26 @@ final class LeetcodeTests {
     @DisplayName("Last Stone Weight")
     void lastStoneWeight(int[] stones, int expected) {
         assertThat(new LastStoneWeight().lastStoneWeight(stones)).isEqualTo(expected);
+    }
+
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("K Closest Points to Origin")
+    void kClosest(int[][] points, int k, int[][] expected) {
+        assertThat(
+            sorted(
+                list(
+                    new KClosestPointsToOrigin().kClosest(points, k)
+                )
+            )
+        )
+            .isEqualTo(sorted(list(expected)));
+    }
+
+    private List<List<Integer>> list(int[][] values) {
+        return Arrays.stream(values)
+                   .map(array -> Arrays.stream(array).boxed().toList())
+                   .toList();
     }
 
     private <T extends Comparable<T>> List<List<T>> sorted(List<List<T>> lists) {
