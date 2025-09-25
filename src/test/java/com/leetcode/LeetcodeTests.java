@@ -592,6 +592,13 @@ final class LeetcodeTests {
             .isEqualTo(sorted(list(expected)));
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Kth Largest Element in an Array")
+    void findKthLargest(int[] numbers, int k, int expected) {
+        assertThat(new KthLargestElementInArray().findKthLargest(numbers, k)).isEqualTo(expected);
+    }
+
     private List<List<Integer>> list(int[][] values) {
         return Arrays.stream(values)
                    .map(array -> Arrays.stream(array).boxed().toList())
