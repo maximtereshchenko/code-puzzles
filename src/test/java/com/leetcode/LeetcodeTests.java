@@ -599,6 +599,13 @@ final class LeetcodeTests {
         assertThat(new KthLargestElementInArray().findKthLargest(numbers, k)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Task Scheduler")
+    void leastInterval(char[] tasks, int gap, int expected) {
+        assertThat(new TaskScheduler().leastInterval(tasks, gap)).isEqualTo(expected);
+    }
+
     private List<List<Integer>> list(int[][] values) {
         return Arrays.stream(values)
                    .map(array -> Arrays.stream(array).boxed().toList())
