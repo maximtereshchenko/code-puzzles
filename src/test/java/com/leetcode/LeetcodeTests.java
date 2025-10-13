@@ -606,6 +606,46 @@ final class LeetcodeTests {
         assertThat(new TaskScheduler().leastInterval(tasks, gap)).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Design Twitter")
+    void designTwitter(
+        List<String> commands,
+        List<List<Integer>> arguments,
+        List<List<Integer>> expected
+    ) {
+        var actual = new ArrayList<List<Integer>>();
+        DesignTwitter solution = null;
+        for (var i = 0; i < commands.size(); i++) {
+            actual.add(
+                switch (commands.get(i)) {
+                    case "Twitter" -> {
+                        solution = new DesignTwitter();
+                        yield null;
+                    }
+                    case "postTweet" -> {
+                        var commandArguments = arguments.get(i);
+                        solution.postTweet(commandArguments.getFirst(), commandArguments.getLast());
+                        yield null;
+                    }
+                    case "getNewsFeed" -> solution.getNewsFeed(arguments.get(i).getFirst());
+                    case "follow" -> {
+                        var commandArguments = arguments.get(i);
+                        solution.follow(commandArguments.getFirst(), commandArguments.getLast());
+                        yield null;
+                    }
+                    case "unfollow" -> {
+                        var commandArguments = arguments.get(i);
+                        solution.unfollow(commandArguments.getFirst(), commandArguments.getLast());
+                        yield null;
+                    }
+                    default -> throw new IllegalArgumentException();
+                }
+            );
+        }
+        assertThat(actual).isEqualTo(expected);
+    }
+
     private List<List<Integer>> list(int[][] values) {
         return Arrays.stream(values)
                    .map(array -> Arrays.stream(array).boxed().toList())
