@@ -646,6 +646,35 @@ final class LeetcodeTests {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Find Median From Data Stream")
+    void findMedianFromDataStream(
+        List<String> commands,
+        List<List<Integer>> arguments,
+        List<Double> expected
+    ) {
+        var actual = new ArrayList<Double>();
+        FindMedianFromDataStream solution = null;
+        for (var i = 0; i < commands.size(); i++) {
+            actual.add(
+                switch (commands.get(i)) {
+                    case "MedianFinder" -> {
+                        solution = new FindMedianFromDataStream();
+                        yield null;
+                    }
+                    case "addNum" -> {
+                        solution.addNum(arguments.get(i).getFirst());
+                        yield null;
+                    }
+                    case "findMedian" -> solution.findMedian();
+                    default -> throw new IllegalArgumentException();
+                }
+            );
+        }
+        assertThat(actual).isEqualTo(expected);
+    }
+
     private List<List<Integer>> list(int[][] values) {
         return Arrays.stream(values)
                    .map(array -> Arrays.stream(array).boxed().toList())
