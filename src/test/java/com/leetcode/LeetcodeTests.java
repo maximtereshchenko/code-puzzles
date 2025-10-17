@@ -682,6 +682,14 @@ final class LeetcodeTests {
         assertThat(sorted(new Subsets().subsets(numbers))).isEqualTo(sorted(expected));
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Combination Sum")
+    void combinationSum(int[] candidates, int target, List<List<Integer>> expected) {
+        assertThat(sorted(new CombinationSum().combinationSum(candidates, target)))
+            .isEqualTo(sorted(expected));
+    }
+
     private List<List<Integer>> list(int[][] values) {
         return Arrays.stream(values)
                    .map(array -> Arrays.stream(array).boxed().toList())
