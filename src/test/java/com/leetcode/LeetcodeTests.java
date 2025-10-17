@@ -675,6 +675,13 @@ final class LeetcodeTests {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Subsets")
+    void subsets(int[] numbers, List<List<Integer>> expected) {
+        assertThat(sorted(new Subsets().subsets(numbers))).isEqualTo(sorted(expected));
+    }
+
     private List<List<Integer>> list(int[][] values) {
         return Arrays.stream(values)
                    .map(array -> Arrays.stream(array).boxed().toList())
