@@ -690,6 +690,14 @@ final class LeetcodeTests {
             .isEqualTo(sorted(expected));
     }
 
+    @ParameterizedTest
+    @ArgumentsSource(LeetcodeArgumentsProvider.class)
+    @DisplayName("Combination Sum II")
+    void combinationSum2(int[] candidates, int target, List<List<Integer>> expected) {
+        assertThat(sorted(new CombinationSumII().combinationSum2(candidates, target)))
+            .isEqualTo(sorted(expected));
+    }
+
     private List<List<Integer>> list(int[][] values) {
         return Arrays.stream(values)
                    .map(array -> Arrays.stream(array).boxed().toList())

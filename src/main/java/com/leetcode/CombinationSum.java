@@ -27,8 +27,7 @@ final class CombinationSum {
             return;
         }
         current.add(candidates[index]);
-        var nextRemaining = remaining - candidates[index];
-        combinationSum(current, candidates, index, nextRemaining, result);
+        combinationSum(current, candidates, index, remaining - candidates[index], result);
         current.removeLast();
         combinationSum(current, candidates, index + 1, remaining, result);
     }
